@@ -152,7 +152,6 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			pstmt.setString(1, trainName);
 			pstmt.setString(2, componentName);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
 			if (rs.next()) {
 				return rs.getInt("place");
 			} else {
