@@ -24,6 +24,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 	}
 
 	public boolean createWagon(Wagon wagon) {
+		System.out.println("createWagon()");
 		try (Connection conn = super.getConnection()) {
 			String query = "insert into components (name, seats, type) values(?, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(query);

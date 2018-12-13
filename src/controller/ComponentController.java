@@ -17,6 +17,17 @@ public class ComponentController {
 		}
 	}
 	
+	public Wagon createWagonWithoutSeats(String name) {
+		System.out.println("createWagonWithoutSeats()");
+		int seats = 20;
+		Wagon wagon = new Wagon(name, seats);
+		if (cdao.createWagon(wagon)) {
+			return wagon;
+		} else {
+			return null;
+		}
+	}
+	
 	public Wagon createWagon(String name, int seats) {
 		Wagon wagon = new Wagon(name, seats);
 		if (cdao.createWagon(wagon)) {

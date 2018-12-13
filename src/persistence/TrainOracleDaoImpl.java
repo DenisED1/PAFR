@@ -10,6 +10,7 @@ import domain.Train;
 public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 	public boolean createTrain(Train train) {
 		if (checkTrainName(train.getName())) {
+			System.out.println("Train doesn't exist yet");
 			try (Connection conn = super.getConnection()) {
 				String query = "insert into train values(?)";
 				PreparedStatement pstmt = conn.prepareStatement(query);
@@ -74,15 +75,16 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, name);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			if (rs.getString("name").equals(name)) {
+			if (rs.next()) {
 				System.out.println("checkTrainName false; naam bestaat al");
 				return false;
 			} else {
 				System.out.println("checkTrainName true; naam bestaat niet");
 				return true;
 			}
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 			e.printStackTrace();
 			System.out.println("checkTrainName error");
 			return false;
