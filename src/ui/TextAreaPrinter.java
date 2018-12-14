@@ -13,11 +13,6 @@ public class TextAreaPrinter implements OutputPrinter{
 	
 	@Override
 	public void print(String value) {
-		try {
-			textarea.getDocument().insertString(0, value + "\n", null);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			textarea.append(value + "\n");
 	}
 }
