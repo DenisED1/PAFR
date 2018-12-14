@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.text.BadLocationException;
 
 import org.antlr.v4.runtime.CharStream;
@@ -29,25 +31,29 @@ public class CUI extends JFrame implements ActionListener {
 	private JButton command;
 	private JLabel lblOutput;
 	private JLabel lblCommand;
+	private JScrollPane inputScroll;
+	private JScrollPane outputScroll;
 
 	public CUI() {
 
 		setLayout(null);
 		input = new JTextArea();
-		input.setBounds(10, 10, 300, 300);
+		inputScroll = new JScrollPane(input);
+		inputScroll.setBounds(10, 10, 300, 300);
 		input.setEditable(false);
-		add(input);
+		add(inputScroll);
 
 		lblOutput = new JLabel("Output: ");
 		lblOutput.setBounds(320, 100, 100, 100);
 		add(lblOutput);
 
 		output = new JTextArea();
-		output.setBounds(370, 10, 300, 300);
+		outputScroll = new JScrollPane(output);
+		outputScroll.setBounds(370, 10, 300, 300);
 		output.setEditable(false);
 		output.setBackground(Color.BLACK);
 		output.setForeground(Color.WHITE);
-		add(output);
+		add(outputScroll);
 
 		lblCommand = new JLabel("Command: ");
 		lblCommand.setBounds(10, 280, 100, 100);
@@ -66,13 +72,8 @@ public class CUI extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == command) {
-			try {
-				input.getDocument().insertString(0, txtCommand.getText() + "\n", null);
-				toParser(txtCommand.getText());
-			} catch (BadLocationException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			input.append(txtCommand.getText() + "\n");
+			toParser(txtCommand.getText());
 		}
 	}
 
@@ -84,7 +85,7 @@ public class CUI extends JFrame implements ActionListener {
 		me.setLocationRelativeTo(null);
 		me.setTitle("RichRail");
 	}
-	
+
 	private void toParser(String command) {
 		CharStream is = CharStreams.fromString(command);
 
@@ -104,5 +105,5 @@ public class CUI extends JFrame implements ActionListener {
 
 		walker.walk(listener, commandContext);
 	}
-	
+
 }
