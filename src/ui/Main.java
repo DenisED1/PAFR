@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String args[]) {
 		TrainController tc = new TrainController();
 		ComponentController cc = new ComponentController();
-		cc.removeComponent("tr1", "wg1");
+		cc.removeComponent("tr1", "wg2");
 		
 		//test
 		
