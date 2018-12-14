@@ -13,7 +13,6 @@ public class ComponentController {
 	
 	public ComponentController(OutputPrinter printer) {
 		this.printer = printer;
-		printer.print("ComponentController gestart");
 	}
 	
 	public boolean createLocomotive(String name) {

@@ -16,7 +16,6 @@ public class RichRailCommand extends RichRailBaseListener {
 		this.printer = printer;
 		cc = new ComponentController(printer);
 		tc = new TrainController(printer);
-		printer.print("RichRailCommand gestart");
 	}
 	
 	public void enterNewtraincommand(@NotNull RichRailParser.NewtraincommandContext ctx) {
