@@ -80,8 +80,8 @@ public class CUI extends JFrame implements ActionListener {
 		CUI me = new CUI();
 		me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		me.setVisible(true);
-		me.setLocationRelativeTo(null);
 		me.setSize(700, 400);
+		me.setLocationRelativeTo(null);
 		me.setTitle("RichRail");
 	}
 	
