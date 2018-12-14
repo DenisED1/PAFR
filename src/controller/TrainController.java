@@ -16,12 +16,7 @@ public class TrainController {
 
 	public boolean createTrain(String name) {
 		Train train = new Train(name);
-		if (tdao.createTrain(train)) {
-			printer.print("Train created");
-			return true;
-		} else {
-			return false;
-		}
+		return tdao.createTrain(train);
 	}
 
 	public boolean deleteTrain(String name) {

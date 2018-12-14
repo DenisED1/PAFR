@@ -18,32 +18,17 @@ public class ComponentController {
 	
 	public boolean createLocomotive(String name) {
 		Locomotive locomotive = new Locomotive(name);
-		if (cdao.createLocomotive(locomotive)) {
-			return true;
-		} else {
-			return false;
-		}
+		return cdao.createLocomotive(locomotive);
 	}
 	
 	public boolean createWagonWithoutSeats(String name) {
-		System.out.println("createWagonWithoutSeats()");
-		printer.print("Dit is een test");
-		int seats = 20;
-		Wagon wagon = new Wagon(name, seats);
-		if (cdao.createWagon(wagon)) {
-			return true;
-		} else {
-			return false;
-		}
+		Wagon wagon = new Wagon(name, 20);
+		return cdao.createWagon(wagon);
 	}
 	
 	public boolean createWagon(String name, int seats) {
 		Wagon wagon = new Wagon(name, seats);
-		if (cdao.createWagon(wagon)) {
-			return true;
-		} else {
-			return false;
-		}
+		return cdao.createWagon(wagon);
 	}
 	
 	public boolean addComponent(String trainName, String componentName) {
@@ -51,7 +36,6 @@ public class ComponentController {
 	}
 	
 	public boolean removeComponent(String trainName, String componentName) {
-		//place remove counter fixen
 		return cdao.removeComponent(trainName, componentName);
 	}
 	
