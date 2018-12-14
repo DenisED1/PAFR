@@ -99,8 +99,10 @@ public class CUI extends JFrame implements ActionListener {
 		ParserRuleContext commandContext = parser.command();
 
 		ParseTreeWalker walker = new ParseTreeWalker();
-		RichRailCommand listener = new RichRailCommand();
+		OutputPrinter printer = new TextAreaPrinter(output);
+		RichRailCommand listener = new RichRailCommand(printer);
 
 		walker.walk(listener, commandContext);
 	}
+	
 }

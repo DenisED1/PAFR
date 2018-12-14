@@ -4,11 +4,21 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import controller.ComponentController;
 import controller.TrainController;
+import ui.OutputPrinter;
 
 public class RichRailCommand extends RichRailBaseListener {
-	ComponentController cc = new ComponentController();
-	TrainController tc = new TrainController();
+	private ComponentController cc;
+	private TrainController tc;
 
+	private OutputPrinter printer;
+	
+	public RichRailCommand(OutputPrinter printer) {
+		this.printer = printer;
+		cc = new ComponentController(printer);
+		tc = new TrainController(printer);
+		printer.print("RichRailCommand gestart");
+	}
+	
 	public void enterNewtraincommand(@NotNull RichRailParser.NewtraincommandContext ctx) {
 		if (ctx.getChild(1).toString().equals("train")) {
 			tc.createTrain(ctx.getChild(2).toString());

@@ -18,7 +18,7 @@ public class Main {
 		// ComponentController cc = new ComponentController();
 		// cc.removeComponent("tr1", "wg1");
 
-		CharStream is = CharStreams.fromString("new locomotive lm5");
+		/*CharStream is = CharStreams.fromString("new locomotive lm5");
 
 		RichRailLexer lexer = new RichRailLexer(is);
 
@@ -33,6 +33,6 @@ public class Main {
 		ParseTreeWalker walker = new ParseTreeWalker();
 		RichRailCommand listener = new RichRailCommand();
 
-		walker.walk(listener, commandContext);
+		walker.walk(listener, commandContext);*/
 	}
 }

@@ -4,9 +4,17 @@ import domain.Locomotive;
 import domain.Wagon;
 import persistence.ComponentDao;
 import persistence.ComponentOracleDaoImpl;
+import ui.OutputPrinter;
 
 public class ComponentController {
 	ComponentDao cdao = new ComponentOracleDaoImpl();
+	
+	private OutputPrinter printer;
+	
+	public ComponentController(OutputPrinter printer) {
+		this.printer = printer;
+		printer.print("ComponentController gestart");
+	}
 	
 	public Locomotive createLocomotive(String name) {
 		Locomotive locomotive = new Locomotive(name);
@@ -19,6 +27,7 @@ public class ComponentController {
 	
 	public Wagon createWagonWithoutSeats(String name) {
 		System.out.println("createWagonWithoutSeats()");
+		printer.print("Dit is een test");
 		int seats = 20;
 		Wagon wagon = new Wagon(name, seats);
 		if (cdao.createWagon(wagon)) {
