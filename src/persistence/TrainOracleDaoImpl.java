@@ -50,11 +50,14 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, trainName);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			return rs.getInt("SEATS");
+			if (rs.next()) {
+				return rs.getInt("SEATS");				
+			} else {
+				return -1;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 0;
+			return -1;
 		}
 	}
 

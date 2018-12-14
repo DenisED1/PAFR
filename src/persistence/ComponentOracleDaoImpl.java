@@ -90,7 +90,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 				return false;
 			}
 		} else {
-			System.out.println("Verwijderd component niet");
+			System.out.println("Component wordt nog gebruikt!");
 			return false;
 		}
 	}

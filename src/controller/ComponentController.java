@@ -16,33 +16,33 @@ public class ComponentController {
 		printer.print("ComponentController gestart");
 	}
 	
-	public Locomotive createLocomotive(String name) {
+	public boolean createLocomotive(String name) {
 		Locomotive locomotive = new Locomotive(name);
 		if (cdao.createLocomotive(locomotive)) {
-			return locomotive;
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	
-	public Wagon createWagonWithoutSeats(String name) {
+	public boolean createWagonWithoutSeats(String name) {
 		System.out.println("createWagonWithoutSeats()");
 		printer.print("Dit is een test");
 		int seats = 20;
 		Wagon wagon = new Wagon(name, seats);
 		if (cdao.createWagon(wagon)) {
-			return wagon;
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	
-	public Wagon createWagon(String name, int seats) {
+	public boolean createWagon(String name, int seats) {
 		Wagon wagon = new Wagon(name, seats);
 		if (cdao.createWagon(wagon)) {
-			return wagon;
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	

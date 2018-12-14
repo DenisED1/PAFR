@@ -14,13 +14,13 @@ public class TrainController {
 		this.printer = printer;
 	}
 
-	public Train createTrain(String name) {
+	public boolean createTrain(String name) {
 		Train train = new Train(name);
 		if (tdao.createTrain(train)) {
 			printer.print("Train created");
-			return train;
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 
