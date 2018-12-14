@@ -11,7 +11,7 @@ import domain.Wagon;
 public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDao {
 	public boolean createLocomotive(Locomotive locomotive) {
 		try (Connection conn = super.getConnection()) {
-			String query = "insert into components (name, type) values(?, ?)";
+			String query = "insert into component (name, type) values(?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, locomotive.getName());
 			pstmt.setString(2, locomotive.getType());

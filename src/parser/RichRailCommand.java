@@ -8,7 +8,7 @@ import controller.TrainController;
 public class RichRailCommand extends RichRailBaseListener {
 	ComponentController cc = new ComponentController();
 	TrainController tc = new TrainController();
-	
+
 	public void enterNewtraincommand(@NotNull RichRailParser.NewtraincommandContext ctx) {
 		if (ctx.getChild(1).toString().equals("train")) {
 			tc.createTrain(ctx.getChild(2).toString());
@@ -16,31 +16,27 @@ public class RichRailCommand extends RichRailBaseListener {
 		System.out.println("type " + ctx.getChild(1));
 		System.out.println("id " + ctx.getChild(2));
 	}
-	
-	public void enterNewwagoncommand(@NotNull RichRailParser.NewwagoncommandContext ctx) {
-		if (ctx.getChild(1).toString().toLowerCase().equals("wagon")) {
-			if (ctx.getChildCount() == 5) {
-				cc.createWagon(ctx.getChild(2).toString(), Integer.parseInt(ctx.getChild(4).toString()));
-			} else if (ctx.getChildCount() == 3) {
-				cc.createWagonWithoutSeats(ctx.getChild(2).toString());
-			}			
-		} else if (ctx.getChild(1).toString().toLowerCase().equals("locomotive")) {
-			cc.createLocomotive(ctx.getChild(2).toString());
-		}
 
+	public void enterNewwagoncommand(@NotNull RichRailParser.NewwagoncommandContext ctx) {
+		if (ctx.getChildCount() == 5) {
+			cc.createWagon(ctx.getChild(2).toString(), Integer.parseInt(ctx.getChild(4).toString()));
+		} else if (ctx.getChildCount() == 3) {
+			cc.createWagonWithoutSeats(ctx.getChild(2).toString());
+		}
 		System.out.println("aantal childs " + ctx.getChildCount());
 		System.out.println("child 0 " + ctx.getChild(0));
 	}
-	
+
 	public void enterNewlocomotivecommand(@NotNull RichRailParser.NewlocomotivecommandContext ctx) {
+		cc.createLocomotive(ctx.getChild(2).getText());
 		System.out.println(ctx.getText());
 	}
-	
+
 	public void enterAddcommand(@NotNull RichRailParser.AddcommandContext ctx) {
 		cc.addComponent(ctx.getChild(3).toString(), ctx.getChild(1).toString());
 		System.out.println("aantal childs " + ctx.getChildCount());
 	}
-	
+
 	public void enterGetcommand(@NotNull RichRailParser.GetcommandContext ctx) {
 		System.out.println(ctx.getText());
 		System.out.println(ctx.getChild(0).getText());
@@ -53,7 +49,7 @@ public class RichRailCommand extends RichRailBaseListener {
 		}
 		System.out.println("aantal childs " + ctx.getChildCount());
 	}
-	
+
 	public void enterDelcommand(@NotNull RichRailParser.DelcommandContext ctx) {
 		System.out.println(ctx.getChildCount());
 		System.out.println(ctx.getText());
@@ -63,7 +59,7 @@ public class RichRailCommand extends RichRailBaseListener {
 			tc.deleteTrain(ctx.getChild(2).getText());
 		}
 	}
-	
+
 	public void enterRemcommand(@NotNull RichRailParser.RemcommandContext ctx) {
 		System.out.println(ctx.getChildCount());
 		System.out.println(ctx.getText());
