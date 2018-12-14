@@ -32,6 +32,10 @@ public class RichRailCommand extends RichRailBaseListener {
 		System.out.println("child 0 " + ctx.getChild(0));
 	}
 	
+	public void enterNewlocomotivecommand(@NotNull RichRailParser.NewlocomotivecommandContext ctx) {
+		System.out.println(ctx.getText());
+	}
+	
 	public void enterAddcommand(@NotNull RichRailParser.AddcommandContext ctx) {
 		cc.addComponent(ctx.getChild(3).toString(), ctx.getChild(1).toString());
 		System.out.println("aantal childs " + ctx.getChildCount());

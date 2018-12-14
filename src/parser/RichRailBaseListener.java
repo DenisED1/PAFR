@@ -1,5 +1,4 @@
-// Generated from RichRail.g4 by ANTLR 4.7.1
-package parser;
+package parser;// Generated from RichRail.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -59,6 +58,18 @@ public class RichRailBaseListener implements RichRailListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNewwagoncommand(RichRailParser.NewwagoncommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNewlocomotivecommand(RichRailParser.NewlocomotivecommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNewlocomotivecommand(RichRailParser.NewlocomotivecommandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

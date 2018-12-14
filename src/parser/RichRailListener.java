@@ -1,6 +1,4 @@
-// Generated from RichRail.g4 by ANTLR 4.7.1
-package parser;
-
+package parser;// Generated from RichRail.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -48,6 +46,16 @@ public interface RichRailListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNewwagoncommand(RichRailParser.NewwagoncommandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RichRailParser#newlocomotivecommand}.
+	 * @param ctx the parse tree
+	 */
+	void enterNewlocomotivecommand(RichRailParser.NewlocomotivecommandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RichRailParser#newlocomotivecommand}.
+	 * @param ctx the parse tree
+	 */
+	void exitNewlocomotivecommand(RichRailParser.NewlocomotivecommandContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RichRailParser#addcommand}.
 	 * @param ctx the parse tree
