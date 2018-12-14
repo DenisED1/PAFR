@@ -46,7 +46,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 	public int getSeatsTrain(String trainName) {
 		try (Connection conn = super.getConnection()) {
 			String query = "select sum(c.seats) as seats\r\n" + "from component c, connection conn\r\n"
-					+ "where c.name = conn.componentname\r\n" + "and conn.trainname = ?;";
+					+ "where c.name = conn.componentname\r\n" + "and conn.trainname = ?";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, trainName);
 			ResultSet rs = pstmt.executeQuery();

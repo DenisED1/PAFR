@@ -26,7 +26,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 	public boolean createWagon(Wagon wagon) {
 		System.out.println("createWagon()");
 		try (Connection conn = super.getConnection()) {
-			String query = "insert into components (name, seats, type) values(?, ?, ?)";
+			String query = "insert into component (name, seats, type) values(?, ?, ?)";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, wagon.getName());
 			pstmt.setInt(2, wagon.getSeats());
@@ -131,15 +131,14 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, componentName);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			if (rs.getString("componentname").equals(componentName)) {
-				System.out.println("Component bestaat al in connection");
+			if (rs.next()) {
 				return false;
 			} else {
-				System.out.println("Component bestaat niet in connection");
 				return true;
 			}
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 			e.printStackTrace();
 			System.out.println("sql error checkComponentUsed()");
 			return false;

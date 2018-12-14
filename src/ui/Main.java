@@ -18,7 +18,7 @@ public class Main {
 		// ComponentController cc = new ComponentController();
 		// cc.removeComponent("tr1", "wg1");
 
-		CharStream is = CharStreams.fromString("new wagon wgtest numseats 14");
+		CharStream is = CharStreams.fromString("remove wg1 from tr1");
 
 		RichRailLexer lexer = new RichRailLexer(is);
 
