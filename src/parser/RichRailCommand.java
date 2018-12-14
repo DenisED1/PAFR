@@ -13,13 +13,6 @@ public class RichRailCommand extends RichRailBaseListener {
 		if (ctx.getChild(1).toString().equals("train")) {
 			tc.createTrain(ctx.getChild(2).toString());
 		}
-//		else if (ctx.getChild(1).toString().equals("wagon")) {
-//			//checken of er een aantal seats mee wordt gegeven?
-//			System.out.println("Command proc");
-//			cc.createWagonWithoutSeats(ctx.getChild(2).toString());
-//		} else if (ctx.getChild(1).toString().equals("locomotive")) {
-//			cc.createLocomotive(ctx.getChild(2).toString());
-//		}
 		System.out.println("type " + ctx.getChild(1));
 		System.out.println("id " + ctx.getChild(2));
 	}
