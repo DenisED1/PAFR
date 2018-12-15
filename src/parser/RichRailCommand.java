@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import controller.ComponentController;
 import controller.TrainController;
+import ui.Logger;
 import ui.OutputPrinter;
 
 public class RichRailCommand extends RichRailBaseListener {

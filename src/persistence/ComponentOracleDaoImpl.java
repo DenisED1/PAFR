@@ -7,8 +7,11 @@ import java.sql.SQLException;
 
 import domain.Locomotive;
 import domain.Wagon;
+import ui.Logger;
 
 public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDao {
+	private static Logger logger = new Logger();
+
 	public boolean createLocomotive(Locomotive locomotive) {
 		try (Connection conn = super.getConnection()) {
 			String query = "insert into component (name, type) values(?, ?)";
@@ -18,7 +21,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			pstmt.executeQuery();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
@@ -33,7 +36,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			pstmt.executeQuery();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
@@ -49,7 +52,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			pstmt.executeQuery();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
@@ -69,7 +72,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 				lowerPlaceComponents(place, trainName);
 				return true;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.printStackTrace(e);
 				return false;
 			}
 		}
@@ -84,7 +87,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 				pstmt.executeQuery();
 				return true;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.printStackTrace(e);
 				return false;
 			}
 		} else {
@@ -101,7 +104,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			rs.next();
 			return rs.getInt("SEATS");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return 0;
 		}
 	}
@@ -116,7 +119,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			int aantal = rs.getInt("amountcomponents");
 			return aantal + 1;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return -1;
 		}
 	}
@@ -135,7 +138,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 		} catch (
 
 		SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
@@ -153,7 +156,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 				return -1;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return -1;
 		}
 	}
@@ -166,7 +169,7 @@ public class ComponentOracleDaoImpl extends OracleBaseDao implements ComponentDa
 			pstmt.setString(2, trainName);
 			pstmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 		}
 	}
 }

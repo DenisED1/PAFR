@@ -33,6 +33,8 @@ public class CUI extends JFrame implements ActionListener {
 	private JLabel lblCommand;
 	private JScrollPane inputScroll;
 	private JScrollPane outputScroll;
+	
+	private static Logger logger = new Logger();
 
 	public CUI() {
 
@@ -73,6 +75,7 @@ public class CUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == command) {
 			input.append(txtCommand.getText() + "\n");
+			logger.print("input: " + txtCommand.getText());
 			toParser(txtCommand.getText());
 		}
 	}
@@ -84,6 +87,8 @@ public class CUI extends JFrame implements ActionListener {
 		me.setSize(700, 400);
 		me.setLocationRelativeTo(null);
 		me.setTitle("RichRail");
+		
+		logger.createLogFile();
 	}
 
 	private void toParser(String command) {

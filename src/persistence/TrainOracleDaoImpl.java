@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import domain.Train;
+import ui.Logger;
 
 public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
+	private static Logger logger = new Logger();
+	
 	public boolean createTrain(Train train) {
 		if (checkTrainName(train.getName())) {
 			try (Connection conn = super.getConnection()) {
@@ -17,7 +20,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 				pstmt.executeQuery();
 				return true;
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.printStackTrace(e);
 				return false;
 			}
 		} else {
@@ -34,7 +37,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 			pstmt.executeQuery();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
@@ -52,7 +55,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 				return -1;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return -1;
 		}
 	}
@@ -64,7 +67,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 			pstmt.setString(1, name);
 			pstmt.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 		}
 	}
 
@@ -82,7 +85,7 @@ public class TrainOracleDaoImpl extends OracleBaseDao implements TrainDao {
 		} catch (
 
 		SQLException e) {
-			e.printStackTrace();
+			logger.printStackTrace(e);
 			return false;
 		}
 	}
